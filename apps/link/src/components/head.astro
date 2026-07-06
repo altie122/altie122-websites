@@ -1,8 +1,12 @@
 ---
-const domain = "https://altie.link/";
+import { getCollection } from "astro:content";
+const links = await getCollection("links");
+const sameAs = links.map((link) => link.data.url);
+
+const domain = "https://altie.link";
+const linkBanner = `${domain}/banner.jpg`;
 const title = "altie.link | altie122's Links";
 const description = "Official altie122 links page with social media, projects, and important profiles.";
-const link_banner = domain + "banner.jpg";
 ---
 
 <!-- DO NOT ADD THE HEAD TAG --><!-- sitemap, favicon, title, and metadata -->
@@ -22,7 +26,7 @@ const link_banner = domain + "banner.jpg";
 <meta property='og:description' content={description} />
 <meta property='og:site_name' content='altie122 links' />
 <meta property='og:locale' content='en_US' />
-<meta property='og:image' content={link_banner} />
+<meta property='og:image' content={linkBanner} />
 <meta property='og:image:width' content='3300' />
 <meta property='og:image:height' content='2550' />
 <meta property="og:image:alt" content="altie122 banner" />
@@ -33,7 +37,7 @@ const link_banner = domain + "banner.jpg";
 <meta name='twitter:url' content={domain} />
 <meta name='twitter:title' content={title} />
 <meta name='twitter:description' content={description} />
-<meta name='twitter:image' content={link_banner} />
+<meta name='twitter:image' content={linkBanner} />
 <meta name="twitter:image:alt" content="altie122 banner" />
 <!-- apple -->
 <link rel='apple-touch-icon' href='/icon.png' />
@@ -44,8 +48,6 @@ const link_banner = domain + "banner.jpg";
     "@type": "Person",
     name: "altie122",
     url: "https://altie.link",
-    sameAs: [
-      "https://x.com/altie122"
-    ]
+    sameAs
   })}
 </script>
