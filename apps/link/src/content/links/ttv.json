@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../.astro/collections/links.schema.json",
   "type": "external",
   "title": "Twitch",
   "description": "I go live 5 days each week! Check it out!",

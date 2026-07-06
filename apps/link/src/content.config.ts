@@ -9,7 +9,8 @@ const links = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
-      type: z.union([z.literal("external"), z.literal("internal")]),
+      type: z.union([z.literal("external"), z.literal("internal"), z.literal("hidden")]),
+      sameAs: z.boolean().default(true),
       icon: image().optional(),
       title: z.string(),
       url: z.url(),

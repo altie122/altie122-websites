@@ -12,6 +12,7 @@
   "dependencies": {
     "@altie122/env": "workspace:*",
     "@astrojs/react": "^6.0.1",
+    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/vercel": "catalog:",
     "@base-ui/react": "^1.6.0",
     "@fontsource-variable/oxanium": "^5.2.8",
