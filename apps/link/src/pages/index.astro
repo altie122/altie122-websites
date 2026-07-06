@@ -17,7 +17,7 @@ const links = (await getCollection("links")).sort((a) =>
     <h1 class='text-6xl font-bold font-heading'>altie122</h1>
     <p>Check out some of my Socials!</p>
     </div>
-    <div class='flex flex-row flex-wrap justify-center gap-4'>
+    <div class='flex flex-row flex-wrap justify-center gap-4 h-1/2 scroll-fade scrollbar-thumb-accent overflow-y-auto'>
       {links.map((link) => <LinksCard entry={link} />)}
     </div>
   </div>
