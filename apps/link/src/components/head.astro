@@ -5,7 +5,7 @@ const linkBanner = `${domain}/banner.jpg`;
 const title = "altie.link | altie122's Links";
 const description = "Official altie122 links page with social media, projects, and important profiles.";
 const links = await getCollection("links");
-const sameAs = links.map((link) => link.data.url);
+const sameAs = links.filter((link) => link.data.type !== "hidden").filter((link) => link.data.sameAs).map((link) => link.data.url);
 const personSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Person",
