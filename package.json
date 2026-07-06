@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "check-types": "turbo run check-types",
-    "dev:web": "turbo run dev -F web"
+    "check-types": "turbo run check-types"
   },
   "dependencies": {
     "@altie122/env": "workspace:*",

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://altie122.dovahkiin.xyz/sitemap-index.xml

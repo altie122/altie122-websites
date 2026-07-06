@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import LinksCard from "@/components/LinkCard";
+import Icon from "../../public/icon-square.png";
+import { Image } from "astro:assets";
+
+const links = (await getCollection("links")).sort((a) =>
+  a.data.type === "internal" ? -1 : 1,
+);
+---
+
+<Layout title="altie.link | Altie122's Links">
+  <div class='flex flex-col gap-4 p-4 container mx-auto max-w-md items-center h-full justify-center'>
+    <div class="flex flex-col md:gap-2 items-center">
+    <Image src={Icon} alt='Altie122 PFP' class="size-32 rounded-full shadow-xl" />
+    <h1 class='text-6xl font-bold font-heading'>altie122</h1>
+    <p>Check out some of my Socials!</p>
+    </div>
+    <div class='flex flex-row flex-wrap justify-center gap-4'>
+      {links.map((link) => <LinksCard entry={link} />)}
+    </div>
+  </div>
+</Layout>

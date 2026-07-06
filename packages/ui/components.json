@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "mauve",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@altie122temp/ui/components",
+    "utils": "@altie122temp/ui/lib/utils",
+    "hooks": "@altie122temp/ui/hooks",
+    "lib": "@altie122temp/ui/lib",
+    "ui": "@altie122temp/ui/components"
+  },
+  "menuColor": "default-translucent",
+  "menuAccent": "subtle",
+  "rtl": false,
+  "registries": {}
+}
