@@ -5,7 +5,7 @@ import LinksCard from "@/components/LinkCard";
 import Icon from "../assets/icon-square.png";
 import { Image } from "astro:assets";
 
-const links = (await getCollection("links")).sort((a) =>
+const links = (await getCollection("links")).filter((link) => link.data.type !== "hidden").sort((a) =>
   a.data.type === "internal" ? -1 : 1,
 );
 ---
