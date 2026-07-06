@@ -1,12 +1,18 @@
 ---
 import { getCollection } from "astro:content";
-const links = await getCollection("links");
-const sameAs = links.map((link) => link.data.url);
-
 const domain = "https://altie.link";
 const linkBanner = `${domain}/banner.jpg`;
 const title = "altie.link | altie122's Links";
 const description = "Official altie122 links page with social media, projects, and important profiles.";
+const links = await getCollection("links");
+const sameAs = links.map((link) => link.data.url);
+const personSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "altie122",
+  url: domain,
+  sameAs,
+});
 ---
 
 <!-- DO NOT ADD THE HEAD TAG --><!-- sitemap, favicon, title, and metadata -->
@@ -42,12 +48,4 @@ const description = "Official altie122 links page with social media, projects, a
 <!-- apple -->
 <link rel='apple-touch-icon' href='/icon.png' />
 <meta name="apple-mobile-web-app-title" content="altie.link" />
-<script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "altie122",
-    url: "https://altie.link",
-    sameAs
-  })}
-</script>
+<script type="application/ld+json" set:html={personSchema}/>
