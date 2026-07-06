@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import LinksCard from "@/components/LinkCard";
-import Icon from "../../public/icon-square.png";
+import Icon from "../assets/icon-square.png";
 import { Image } from "astro:assets";
 
 const links = (await getCollection("links")).sort((a) =>
