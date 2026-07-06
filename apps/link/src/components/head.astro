@@ -1,0 +1,51 @@
+---
+const domain = "https://altie.link/";
+const title = "altie.link | altie122's Links";
+const description = "Official altie122 links page with social media, projects, and important profiles.";
+const link_banner = domain + "banner.jpg";
+---
+
+<!-- DO NOT ADD THE HEAD TAG --><!-- sitemap, favicon, title, and metadata -->
+<meta charset='UTF-8' />
+<meta name='description' content={description} />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<link rel='icon' type='image/png' href='/icon.png' />
+<meta name='generator' content={Astro.generator} />
+<title>{title}</title>
+<link rel='canonical' href={domain} />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="altie122" />
+<!-- Social meta -->
+<meta property='og:type' content='website' />
+<meta property='og:url' content={domain} />
+<meta property='og:title' content={title} />
+<meta property='og:description' content={description} />
+<meta property='og:site_name' content='altie122 links' />
+<meta property='og:locale' content='en_US' />
+<meta property='og:image' content={link_banner} />
+<meta property='og:image:width' content='3300' />
+<meta property='og:image:height' content='2550' />
+<meta property="og:image:alt" content="altie122 banner" />
+<!-- twitter -->
+<meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:site' content='@altie122' />
+<meta name='twitter:creator' content='@altie122' />
+<meta name='twitter:url' content={domain} />
+<meta name='twitter:title' content={title} />
+<meta name='twitter:description' content={description} />
+<meta name='twitter:image' content={link_banner} />
+<meta name="twitter:image:alt" content="altie122 banner" />
+<!-- apple -->
+<link rel='apple-touch-icon' href='/icon.png' />
+<meta name="apple-mobile-web-app-title" content="altie.link" />
+<script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "altie122",
+    url: "https://altie.link",
+    sameAs: [
+      "https://x.com/altie122"
+    ]
+  })}
+</script>

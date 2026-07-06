@@ -1,21 +1,12 @@
 ---
 import "@altie122/ui/styles/globals.css";
-
-interface Props {
-  title?: string;
-}
-
-const { title = "altie122" } = Astro.props;
+import Head from "../components/head.astro";
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/icon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <Head/>
   </head>
   <body class="h-svh">
     <slot />
