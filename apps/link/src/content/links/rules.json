@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../.astro/collections/links.schema.json",
+  "title": "Community Rules",
+  "type": "hidden",
+  "url": "https://www.altie122.xyz/blog/posts/community-rules/",
+  "description": "The rules for Altie122's community spaces."
+}
