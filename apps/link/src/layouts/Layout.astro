@@ -1,12 +1,14 @@
 ---
 import "@altie122/ui/styles/globals.css";
 import Head from "../components/head.astro";
+import Analytics from '@vercel/analytics/astro'
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
   <head>
     <Head/>
+    <Analytics />
   </head>
   <body class="h-svh">
     <slot />
