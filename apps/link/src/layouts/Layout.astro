@@ -1,7 +1,8 @@
 ---
 import "@altie122/ui/styles/globals.css";
 import Head from "../components/head.astro";
-import Analytics from '@vercel/analytics/astro'
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -9,6 +10,7 @@ import Analytics from '@vercel/analytics/astro'
   <head>
     <Head/>
     <Analytics />
+    <SpeedInsights />
   </head>
   <body class="h-svh">
     <slot />
