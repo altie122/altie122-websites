@@ -8,7 +8,7 @@ interface Props {
 export default function LinkCard({ entry }: Props) {
   const data = entry.data;
   return (
-    <Bubble variant={data.type === "internal" ? "destructive" : "tinted"} className='w-full'>
+    <Bubble variant={"tinted"} className='w-full'>
       <BubbleContent
         render={
           <a href={data.url} target='_blank' className='flex flex-col gap-2'>
