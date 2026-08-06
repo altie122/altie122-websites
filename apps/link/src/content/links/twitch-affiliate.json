@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../.astro/collections/links.schema.json",
+  "type": "hidden",
+  "title": "Twitch Affiliate Blog Post",
+  "url": "https://www.altie122.xyz/blog/posts/twitch-affiliate/",
+  "description": "Twitch Affiliate Blog Post"
+}
