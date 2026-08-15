@@ -6,8 +6,9 @@ export const GET = (async ({ params, redirect }) => {
   const [slug, ...rest] = id.split("/");
 
   const links = await getCollection("links");
+  console.log(links);
   const link = links.find((link) => link.id === slug);
-
+  console.log(link);
   if (!link) {
     return new Response(null, {
       status: 404,
