@@ -1,7 +1,7 @@
 import {query} from "./_generated/server";
 import {paginationOptsValidator} from "convex/server";
 import {v} from "convex/values";
-import {Doc, Id} from "./_generated/dataModel";
+import type {Doc, Id} from "./_generated/dataModel";
 
 export const get_links_page = query({
     handler: async (ctx) => {
