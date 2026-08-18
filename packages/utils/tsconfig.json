@@ -1,0 +1,3 @@
+{
+  "extends": "@altie122/config/tsconfig.base.json"
+}

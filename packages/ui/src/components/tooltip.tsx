@@ -1,6 +1,6 @@
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip"
 
-import { cn } from "@altie122temp/ui/lib/utils"
+import { cn } from "@altie122/ui/lib/utils"
 
 function TooltipProvider({
   delay = 0,
