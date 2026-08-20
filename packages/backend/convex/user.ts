@@ -1,7 +1,7 @@
 import {internalQuery, query} from './_generated/server';
 import {authKit} from './auth';
 import {v} from 'convex/values';
-import {Doc} from './_generated/dataModel';
+import type {Doc} from './_generated/dataModel';
 import {ReturnBuilder} from '@altie122/utils/api';
 
 const response = new ReturnBuilder('user');
