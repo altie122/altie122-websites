@@ -14,7 +14,7 @@ export async function GET(request: NextRequest, ctx: RouteContext<'/[...id]'>) {
     if (!linkId) {
         permanentRedirect("/");
     }
-    const link = await fetchQuery(api.links.get_link_by_id, {id: linkId});
+    const link = await fetchQuery(api.links.getLinkById, {id: linkId});
     if (!link) {
         permanentRedirect("/");
     }

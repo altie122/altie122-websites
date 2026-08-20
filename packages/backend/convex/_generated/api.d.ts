@@ -8,8 +8,11 @@
  * @module
  */
 
+import type * as auth from "../auth.js";
 import type * as healthCheck from "../healthCheck.js";
+import type * as http from "../http.js";
 import type * as links from "../links.js";
+import type * as user from "../user.js";
 
 import type {
   ApiFromModules,
@@ -18,8 +21,11 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  auth: typeof auth;
   healthCheck: typeof healthCheck;
+  http: typeof http;
   links: typeof links;
+  user: typeof user;
 }>;
 
 /**
@@ -48,4 +54,6 @@ export declare const internal: FilterApi<
   FunctionReference<any, "internal">
 >;
 
-export declare const components: {};
+export declare const components: {
+  workOSAuthKit: import("@convex-dev/workos-authkit/_generated/component.js").ComponentApi<"workOSAuthKit">;
+};

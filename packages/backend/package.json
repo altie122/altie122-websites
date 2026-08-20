@@ -10,9 +10,12 @@
     "dev:setup": "convex dev --configure --until-success"
   },
   "dependencies": {
+    "@altie122/utils": "workspace:*",
+    "@convex-dev/workos-authkit": "^0.2.7",
     "convex": "catalog:",
     "dotenv": "catalog:",
-    "zod": "catalog:"
+    "zod": "catalog:",
+    "unique-username-generator": "^1.5.1"
   },
   "devDependencies": {
     "@altie122/config": "workspace:*",

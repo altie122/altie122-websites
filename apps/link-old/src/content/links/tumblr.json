@@ -1,7 +1,0 @@
-{
-  "$schema": "../../../.astro/collections/links.schema.json",
-  "type": "external",
-  "title": "Tumblr",
-  "url": "https://www.tumblr.com/altie122",
-  "description": "Have I ever actually posted on here?"
-}

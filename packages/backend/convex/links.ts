@@ -1,37 +1,47 @@
-import {query} from "./_generated/server";
-import {paginationOptsValidator} from "convex/server";
-import {v} from "convex/values";
-import type {Doc, Id} from "./_generated/dataModel";
+import {query} from './_generated/server';
+import {paginationOptsValidator} from 'convex/server';
+import {v} from 'convex/values';
+import type {Doc, Id} from './_generated/dataModel';
+import {ReturnBuilder} from '@altie122/utils/api';
 
-export const get_links_page = query({
+const response = new ReturnBuilder('links');
+
+export const getLinksPage = query({
     handler: async (ctx) => {
-        return await ctx.db.query("links").filter(q => q.not(q.eq(q.field("type"), "hidden"))).collect()
-    }
-})
+        const responseBuilder = response.function('getLinksPage');
+        const links = await ctx.db.query('links').filter(q => q.not(q.eq(q.field('type'), 'hidden'))).collect();
+        return responseBuilder.success({
+            status: 'OK',
+            data: links,
+            statusCode: 'S',
+            id: 1,
+        });
+    },
+});
 
-export const get_links_page_paginated = query({
+export const getLinksPagePaginated = query({
     args: {
-        paginationOpts: paginationOptsValidator
+        paginationOpts: paginationOptsValidator,
     },
     handler: async (ctx, args) => {
-        return await ctx.db.query("links").filter(q => q.not(q.eq(q.field("type"), "hidden"))).paginate(args.paginationOpts)
-    }
-})
+        return await ctx.db.query('links').filter(q => q.not(q.eq(q.field('type'), 'hidden'))).paginate(args.paginationOpts);
+    },
+});
 
-export const get_link_by_id = query({
+export const getLinkById = query({
     args: {
-        id: v.string()
+        id: v.string(),
     },
     handler: async (ctx, args) => {
-        let link: Doc<"links"> | null = null
+        let link: Doc<'links'> | null = null;
 
         async function get_other_id() {
             async function get_alternate_links() {
-                let temp: Doc<"links"> | null;
+                let temp: Doc<'links'> | null;
                 try {
-                    const entry = await ctx.db.query("linksAlternateIds").withIndex("by_alternateId", q => q.eq("id", args.id)).unique();
+                    const entry = await ctx.db.query('linksAlternateIds').withIndex('by_alternateId', q => q.eq('id', args.id)).unique();
                     if (entry) {
-                        temp = await ctx.db.get("links", entry.link);
+                        temp = await ctx.db.get('links', entry.link);
                     } else {
                         temp = null;
                     }
@@ -42,9 +52,9 @@ export const get_link_by_id = query({
                 return temp;
             }
 
-            let temp: Doc<"links"> | null;
+            let temp: Doc<'links'> | null;
             try {
-                temp = await ctx.db.query("links").withIndex("by_mainId", q => q.eq("mainId", args.id)).unique();
+                temp = await ctx.db.query('links').withIndex('by_mainId', q => q.eq('mainId', args.id)).unique();
                 if (!temp) {
                     return await get_alternate_links();
                 }
@@ -57,7 +67,7 @@ export const get_link_by_id = query({
 
         if (args.id.length === 32) {
             try {
-                link = await ctx.db.get("links", args.id as Id<"links">);
+                link = await ctx.db.get('links', args.id as Id<'links'>);
                 if (!link) {
                     link = await get_other_id();
                 }
@@ -68,6 +78,6 @@ export const get_link_by_id = query({
         } else {
             link = await get_other_id();
         }
-        return link
-    }
-})
+        return link;
+    },
+});

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@altie122/backend": "workspace:*",
+    "@altie122/utils": "workspace:*",
     "@base-ui/react": "^1.6.0",
     "@shadcn/react": "^0.2.0",
     "class-variance-authority": "^0.7.1",

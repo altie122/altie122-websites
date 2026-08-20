@@ -1,7 +1,0 @@
-{
-  "$schema": "../../../.astro/collections/links.schema.json",
-  "type": "hidden",
-  "title": "Fortnite Sprites",
-  "url": "https://fortnite.gg/sprites?id=2840379",
-  "description": "Fortnite Sprite collection"
-}
