@@ -12,6 +12,7 @@ import type * as auth from "../auth.js";
 import type * as healthCheck from "../healthCheck.js";
 import type * as http from "../http.js";
 import type * as links from "../links.js";
+import type * as twitchSchedule from "../twitchSchedule.js";
 import type * as user from "../user.js";
 
 import type {
@@ -25,6 +26,7 @@ declare const fullApi: ApiFromModules<{
   healthCheck: typeof healthCheck;
   http: typeof http;
   links: typeof links;
+  twitchSchedule: typeof twitchSchedule;
   user: typeof user;
 }>;
 

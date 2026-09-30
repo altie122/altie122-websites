@@ -2,9 +2,6 @@ import {internalQuery, query} from './_generated/server';
 import {authKit} from './auth';
 import {v} from 'convex/values';
 import type {Doc} from './_generated/dataModel';
-import {ReturnBuilder} from '@altie122/utils/api';
-
-const response = new ReturnBuilder('user');
 
 export const getCurrentUserInternal = internalQuery({
     args: {},
@@ -26,33 +23,17 @@ export const getCurrentUser = query({
         returnBadges: v.optional(v.boolean()),
     },
     handler: async (ctx, args) => {
-        const responseBuilder = response.function('getCurrentUser');
         const authUser = await authKit.getAuthUser(ctx);
         if (!authUser) {
-            return responseBuilder.error({
-                status: 'Unauthenticated',
-                message: 'User is not signed in.',
-                statusCode: 'U',
-                id: 1,
-            });
+            throw new Error('User not authenticated!');
         }
         const user = await ctx.db.query('users').withIndex('by_authId', q => q.eq('authId', authUser.id)).unique();
         if (!user) {
-            return responseBuilder.error({
-                status: 'Error',
-                message: 'User not found.',
-                statusCode: 'N',
-                id: 1,
-            });
+            throw new Error('User not found!');
         }
         const returnBadges = user.badges.length === 0 ? false : args.returnBadges ?? false;
         if (!returnBadges) {
-            return responseBuilder.success({
-                status: 'OK',
-                data: user,
-                statusCode: 'S',
-                id: 1,
-            });
+            return user;
         }
         const userBadges: Doc<'badges'>[] = [];
         for (const badgeId of user.badges) {
@@ -61,15 +42,10 @@ export const getCurrentUser = query({
                 userBadges.push(badge);
             }
         }
-        return responseBuilder.success({
-            status: 'OK',
-            data: {
-                ...user,
-                badges: userBadges,
-            },
-            statusCode: 'S',
-            id: 2,
-        });
+        return {
+            ...user,
+            userBadges,
+        };
     },
 });
 
@@ -79,24 +55,13 @@ export const getUserById = query({
         returnBadges: v.optional(v.boolean()),
     },
     handler: async (ctx, args) => {
-        const responseBuilder = response.function('getUserById');
         const user = await ctx.db.get('users', args.id);
         if (!user) {
-            return responseBuilder.error({
-                status: 'Error',
-                message: 'User not found.',
-                statusCode: 'N',
-                id: 1,
-            });
+            throw new Error('User not found!');
         }
         const returnBadges = user.badges.length === 0 ? false : args.returnBadges ?? false;
         if (!returnBadges) {
-            return responseBuilder.success({
-                status: 'OK',
-                data: user,
-                statusCode: 'S',
-                id: 1,
-            });
+            return user;
         }
         const userBadges: Doc<'badges'>[] = [];
         for (const badgeId of user.badges) {
@@ -105,14 +70,9 @@ export const getUserById = query({
                 userBadges.push(badge);
             }
         }
-        return responseBuilder.success({
-            status: 'OK',
-            data: {
-                ...user,
-                badges: userBadges,
-            },
-            statusCode: 'S',
-            id: 2,
-        });
+        return {
+            ...user,
+            userBadges,
+        };
     },
 });

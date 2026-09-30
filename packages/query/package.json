@@ -1,0 +1,27 @@
+{
+  "name": "@altie122/query",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./provider": "./src/provider.tsx"
+  },
+  "dependencies": {
+    "@altie122/backend": "workspace:*",
+    "@altie122/utils": "workspace:*",
+    "@altie122/env": "workspace:*",
+    "@convex-dev/react-query": "^0.1.0",
+    "@tanstack/react-query": "^5.103.2",
+    "convex": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@altie122/config": "workspace:*",
+    "@types/node": "^24",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:"
+  }
+}

@@ -12,11 +12,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@altie122temp/ui/components",
-    "utils": "@altie122temp/ui/lib/utils",
-    "hooks": "@altie122temp/ui/hooks",
-    "lib": "@altie122temp/ui/lib",
-    "ui": "@altie122temp/ui/components"
+    "components": "@altie122/ui/components",
+    "utils": "@altie122/ui/lib/utils",
+    "hooks": "@altie122/ui/hooks",
+    "lib": "@altie122/ui/lib",
+    "ui": "@altie122/ui/components"
   },
   "menuColor": "default-translucent",
   "menuAccent": "subtle",

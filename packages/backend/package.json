@@ -14,12 +14,13 @@
     "@convex-dev/workos-authkit": "^0.2.7",
     "convex": "catalog:",
     "dotenv": "catalog:",
-    "zod": "catalog:",
-    "unique-username-generator": "^1.5.1"
+    "ts-ics": "^2.4.6",
+    "unique-username-generator": "^1.5.1",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@altie122/config": "workspace:*",
-    "@types/node": "^24.13.3",
+    "@types/node": "^24",
     "typescript": "catalog:"
   }
 }

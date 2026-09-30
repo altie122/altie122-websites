@@ -1,17 +1,16 @@
 'use client';
 
-import {env} from '@altie122/env/web';
 import {Toaster} from '@altie122/ui/components/sonner';
-import {ConvexProvider, ConvexReactClient} from 'convex/react';
-
 import {ThemeProvider} from '@altie122/ui/components/ui122/theme-provider';
+import type {ReactNode} from 'react';
+import {QueryProvider} from '@altie122/query/provider';
 
-const convex = new ConvexReactClient(env.NEXT_PUBLIC_CONVEX_URL);
-
-export default function Providers({children}: { children: React.ReactNode }) {
+export default function Providers({children}: { children: ReactNode }) {
     return (
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <ConvexProvider client={convex}>{children}</ConvexProvider>
+            <QueryProvider>
+                {children}
+            </QueryProvider>
             <Toaster richColors/>
         </ThemeProvider>
     );

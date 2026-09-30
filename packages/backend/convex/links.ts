@@ -2,20 +2,11 @@ import {query} from './_generated/server';
 import {paginationOptsValidator} from 'convex/server';
 import {v} from 'convex/values';
 import type {Doc, Id} from './_generated/dataModel';
-import {ReturnBuilder} from '@altie122/utils/api';
-
-const response = new ReturnBuilder('links');
 
 export const getLinksPage = query({
     handler: async (ctx) => {
-        const responseBuilder = response.function('getLinksPage');
         const links = await ctx.db.query('links').filter(q => q.not(q.eq(q.field('type'), 'hidden'))).collect();
-        return responseBuilder.success({
-            status: 'OK',
-            data: links,
-            statusCode: 'S',
-            id: 1,
-        });
+        return links;
     },
 });
 

@@ -1,9 +1,9 @@
 {
-  "name": "links",
+  "name": "altie122.xyz",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev --port 3000",
     "build": "next build",
     "check-types": "tsc --noEmit",
     "start": "next start"
@@ -11,10 +11,12 @@
   "dependencies": {
     "@altie122/backend": "workspace:*",
     "@altie122/env": "workspace:*",
+    "@altie122/query": "workspace:*",
     "@altie122/ui": "workspace:*",
     "@altie122/utils": "workspace:*",
-    "@altie122/query": "workspace:*",
+    "@convex-dev/react-query": "^0.1.0",
     "@swc/helpers": "^0.5.23",
+    "@tanstack/react-query": "^5.103.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "convex": "catalog:",
     "dotenv": "catalog:",
