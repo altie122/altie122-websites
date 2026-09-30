@@ -56,17 +56,17 @@ export function BlogCardSkeleton() {
             <CardHeader>
                 <div className="inline-flex gap-4 justify-between"
                 >
-                    <Skeleton className={'h-[1.4rem] w-1/3'}/>
+                    <Skeleton className={'h-[1.4rem] w-1/2'}/>
                     <span className="flex flex-row gap-4 items-center">
                         <Skeleton
                             className={'h-5 w-[55px] shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl'}/>
                     </span>
                 </div
                 >
-                <Skeleton className={'h-[1.4rem] w-1/3'}/>
+                <Skeleton className={'h-[0.8rem] w-1/3'}/>
                 <div className="flex flex-row items-center">
                     <Skeleton className={'h-[1.4rem] w-[25px]'}/>
-                    <p>/</p>
+                    <CardDescription>/</CardDescription>
                     <Skeleton className={'h-[1.4rem] w-1/3'}/>
                 </div>
             </CardHeader>
@@ -75,7 +75,7 @@ export function BlogCardSkeleton() {
             </CardContent>
             <CardFooter className="flex justify-between">
                 <Skeleton
-                    className="h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2"/>
+                    className="h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 w-[50px]"/>
             </CardFooter>
         </Card>
     );
