@@ -10,10 +10,8 @@ const posts = defineCollection({
         lastUpdated: z.date().optional(),
         description: z.string(),
         authors: z.array(reference('authors')),
-        image: z.object({
-            cover: image(),
-            alt: z.string(),
-        }),
+        imageCover: image(),
+        imageAlt: z.string(),
         relatedPosts: z.array(reference('posts')).optional(),
         relatedLinks: z.array(z.object({
             title: z.string(),

@@ -21,7 +21,10 @@ export const GET = (async ({params, request}) => {
                 description: post.data.description,
                 pubDate: post.data.pubDate,
                 lastUpdated: post.data.lastUpdated,
-                image: post.data.image,
+                image: {
+                    cover: post.data.imageCover,
+                    alt: post.data.imageAlt,
+                },
                 tags: post.data.tags,
             },
             authors: authors,
