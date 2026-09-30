@@ -24,7 +24,7 @@ export const GET = (async ({params, request}) => {
                 pubDate: post.data.pubDate,
                 lastUpdated: post.data.lastUpdated,
                 image: {
-                    cover: getImage(post.data.imageCover),
+                    cover: await getImage({src: post.data.imageCover}),
                     alt: post.data.imageAlt,
                 },
                 tags: post.data.tags,
