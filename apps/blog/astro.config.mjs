@@ -20,7 +20,11 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
 
-    base: "/blog",
+    build: {
+        assetsPrefix: isDevelopment
+            ? undefined
+            : "https://altie122.xyz/blog",
+    },
 
     integrations: [react(), mdx()]
 });

@@ -34,7 +34,7 @@ const author = await getEntries(entry.data.authors);
         >
         <CardDescription>{data.description}</CardDescription>
         <CardDescription>
-            {data.pubDate.toLocaleDateString()} | {
+            {data.pubDate.toLocaleDateString()} / {
             author.map((author) => author.data.name).join(', ')
         }
         </CardDescription>

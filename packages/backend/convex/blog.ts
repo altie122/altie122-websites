@@ -1,84 +1,7 @@
 import {action} from './_generated/server';
+import type {BlogApiReturnJson, BlogApiReturn} from '@altie122/utils/types';
 
-type ImageFormat =
-    | 'png'
-    | 'jpg'
-    | 'jpeg'
-    | 'tiff'
-    | 'webp'
-    | 'gif'
-    | 'svg'
-    | 'avif'
-    | 'apng';
-
-interface AuthorData {
-    name: string;
-    pfp: {
-        src: string;
-        width: number;
-        height: number;
-        format: ImageFormat;
-    };
-    website?: {
-        url: string;
-        title: string;
-    };
-}
-
-interface ApiAuthor {
-    id: string;
-    body?: string;
-    collection: 'authors';
-    data: AuthorData;
-    rendered?: {
-        html: string;
-        metadata?: Record<string, unknown>;
-    };
-    filePath?: string;
-    digest?: string | number;
-}
-
-interface ApiReturnJson {
-    post: {
-        title: string;
-        description: string;
-        pubDate: string;
-        lastUpdated?: string;
-        image: {
-            cover: {
-                src: string;
-                width: number;
-                height: number;
-                format: ImageFormat;
-            };
-            alt: string;
-        };
-        tags: string[];
-    };
-    authors: ApiAuthor[];
-}
-
-interface ApiReturn {
-    post: {
-        title: string;
-        description: string;
-        pubDate: number;
-        lastUpdated?: number;
-        image: {
-            cover: {
-                src: string;
-                width: number;
-                height: number;
-                format: ImageFormat;
-            };
-            alt: string;
-        };
-        tags: string[];
-    };
-    authors: ApiAuthor[];
-}
-
-function parseApiReturn(data: ApiReturnJson): ApiReturn {
+function parseApiReturn(data: BlogApiReturnJson): BlogApiReturn {
     const pubDate = new Date(data.post.pubDate).getTime();
 
     if (Number.isNaN(pubDate)) {
@@ -107,7 +30,7 @@ function parseApiReturn(data: ApiReturnJson): ApiReturn {
     };
 }
 
-async function getPostFromApi(url: string): Promise<ApiReturn> {
+async function getPostFromApi(url: string): Promise<BlogApiReturn> {
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -116,7 +39,7 @@ async function getPostFromApi(url: string): Promise<ApiReturn> {
         );
     }
 
-    const json: ApiReturnJson = await response.json();
+    const json: BlogApiReturnJson = await response.json();
 
     return parseApiReturn(json);
 }

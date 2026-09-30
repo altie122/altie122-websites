@@ -5,7 +5,9 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./api": "./src/api/index.ts"
+    "./api": "./src/api/index.ts",
+    "./types/*": "./src/types/*.ts",
+    "./types": "./src/types/index.ts"
   },
   "dependencies": {
     "zod": "catalog:"

@@ -17,6 +17,7 @@ export const GET = (async ({params, request}) => {
     return new Response(
         JSON.stringify({
             post: {
+                id: post.id,
                 title: post.data.title,
                 description: post.data.description,
                 pubDate: post.data.pubDate,

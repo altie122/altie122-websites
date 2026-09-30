@@ -3,9 +3,11 @@ import {api} from '@altie122/backend/convex/_generated/api';
 import {LinkPanel} from '@altie122/ui/components/ui122/links-panel';
 import {useQuery} from '@tanstack/react-query';
 import {convexAction, convexQuery} from '@convex-dev/react-query';
+import {BlogPanel} from '@altie122/ui/components/ui122/blog-panel';
 
 export default function Home() {
     const links = useQuery(convexQuery(api.links.getLinksPage));
+    const blogPost = useQuery(convexAction(api.blog.getRecentBlogPost));
     const twitchStreams = useQuery(convexAction(api.twitchSchedule.getTwitchSchedule));
     return (
         <main className={'p-2 flex flex-row justify-center'}>
@@ -16,8 +18,9 @@ export default function Home() {
                     <p>New website still under construction! Feel free to leave feedback in the <a
                         href={'https://altie.link/discord'}>Discord server!</a></p>
                 </div>
-                <div className={'flex flex-col gap-4 lg:max-w-sm'}>
-                    <LinkPanel links={links} replaceTitle={'Links'} className={'top-14 sticky'}/>
+                <div className={'flex flex-col gap-4 lg:max-w-sm w-full top-14 sticky'}>
+                    <LinkPanel links={links} replaceTitle={'Links'}/>
+                    <BlogPanel post={blogPost} replaceTitle={'Blog'}/>
                 </div>
             </div>
         </main>
