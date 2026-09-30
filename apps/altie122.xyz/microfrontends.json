@@ -20,7 +20,6 @@
       "routing": [
         {
           "paths": [
-            "/blog/",
             "/blog/:path*"
           ]
         }
