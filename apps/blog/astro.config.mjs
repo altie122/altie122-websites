@@ -18,9 +18,8 @@ export default defineConfig({
 
     vite: {
         plugins: [tailwindcss()],
+        base: "/blog",
     },
-
-    base: "/blog",
 
     integrations: [react(), mdx()]
 });
