@@ -1,5 +1,6 @@
 import type {APIRoute} from 'astro';
 import {getCollection, getEntries} from 'astro:content';
+import {getImage} from 'astro:assets';
 
 export const GET = (async ({params, request}) => {
     const posts = [...(await getCollection('posts', ({data}) => {
@@ -23,7 +24,7 @@ export const GET = (async ({params, request}) => {
                 pubDate: post.data.pubDate,
                 lastUpdated: post.data.lastUpdated,
                 image: {
-                    cover: post.data.imageCover,
+                    cover: getImage(post.data.imageCover),
                     alt: post.data.imageAlt,
                 },
                 tags: post.data.tags,

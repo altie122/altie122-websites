@@ -9,6 +9,40 @@ export type ImageFormat =
     | 'avif'
     | 'apng';
 
+type ImageTransform = {
+    src: string;
+    width?: number | `${number}`;
+    height?: number | `${number}`;
+    format?: ImageFormat | string;
+    quality?: string | number;
+    priority?: boolean;
+    fit?: string;
+    position?: string;
+    background?: string;
+    layout?: 'constrained' | 'fixed' | 'full-width' | 'none';
+    widths?: number[];
+    densities?: (number | `${number}x`)[];
+    [key: string]: unknown;
+};
+
+interface SrcSetValue {
+    transform: ImageTransform;
+    descriptor?: string;
+    attributes?: Record<string, unknown>;
+    url: string;
+}
+
+export interface ImageCover {
+    rawOptions: ImageTransform;
+    options: ImageTransform;
+    src: string;
+    srcSet: {
+        values: SrcSetValue[];
+        attribute: string;
+    };
+    attributes: Record<string, unknown>;
+}
+
 export interface BlogAuthorData {
     name: string;
     pfp: {
@@ -44,12 +78,7 @@ export interface BlogApiReturnJson {
         pubDate: string;
         lastUpdated?: string;
         image: {
-            cover: {
-                src: string;
-                width: number;
-                height: number;
-                format: ImageFormat;
-            };
+            cover: ImageCover;
             alt: string;
         };
         tags: string[];
@@ -65,12 +94,7 @@ export interface BlogApiReturn {
         pubDate: number;
         lastUpdated?: number;
         image: {
-            cover: {
-                src: string;
-                width: number;
-                height: number;
-                format: ImageFormat;
-            };
+            cover: ImageCover;
             alt: string;
         };
         tags: string[];
