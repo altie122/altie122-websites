@@ -1,0 +1,91 @@
+---
+import {getEntries, type CollectionEntry} from 'astro:content';
+import Layout from './Layout.astro';
+import {Image} from 'astro:assets';
+import BlogCard from '@/components/blog-card.astro';
+import AuthorCard from '@/components/author-card.astro';
+import {Badge} from '@altie122/ui/components/badge';
+interface Props {
+    data: CollectionEntry<'posts'>['data'];
+}
+
+const {data} = Astro.props;
+
+const authors = await getEntries(data.authors);
+
+const relatedPosts = data.relatedPosts && (await getEntries(data.relatedPosts));
+---
+
+<Layout title={data.title} description="Altie122" page="/">
+    <main class="flex gap-4 flex-col lg:flex-row p-4 h-full pb-12 lg:pb-4">
+        <div class="h-full w-full order-2 lg:order-1 flex flex-col">
+            {
+                relatedPosts && (
+                            <div class="flex flex-col gap-4 p-4 border-sidebar-border/25 border bg-sidebar/25 text-sidebar-foreground/50 shadow rounded-lg">
+                                <h2 class="">Related Posts</h2>
+                                <ul>
+                                    {relatedPosts.map((post) => (
+                                            <li>
+                                                <BlogCard entry={post}/>
+                                            </li>
+                                    ))}
+                                </ul>
+                            </div>
+                )
+            }
+        </div>
+        <div
+                class="prose-no-container pb-16 max-w-5xl order-1 lg:order-2 lg:grow"
+        >
+            <div
+                    class="bg-sidebar text-sidebar-foreground border-sidebar-border border rounded-lg w-full"
+            >
+                <Image
+                        src={data.image.cover}
+                        alt={data.image.alt}
+                        class="w-full rounded-t-lg"
+                />
+                <div class="p-4 flex flex-col gap-4">
+                    <h1>{data.title}</h1>
+                    <em>{data.description}</em>
+                    {data.pubDate.toLocaleString()}
+                    <br/>
+                    Written by:
+                    <div class="flex flex-row flex-wrap gap-4">
+                        {authors.map((author) =>
+                                <AuthorCard entry={author}/>)}
+                    </div>
+                    tags: {data.tags.map((tag) =>
+                        <Badge className="w-fit">{tag}</Badge>)}
+                </div>
+            </div>
+            <slot/>
+        </div>
+        <div class="h-full w-full order-3">
+            {
+                data.relatedLinks && (
+                            <div class="flex flex-col gap-4 p-4 border-sidebar-border/25 border bg-sidebar/25 text-sidebar-foreground/50 shadow rounded-lg">
+                                <h2 class="">Related Links</h2>
+                                <div class="flex flex-row flex-wrap gap-4 w-full justify-center">
+                                    {data.relatedLinks.map((link) => (
+                                            <a
+                                                    href={link.url}
+                                                    class="p-4 bg-sidebar text-sidebar-foreground border-sidebar-border border rounded-lg inline-flex gap-4 hover:bg-accent transition-colors duration-500 ease-in-out"
+                                            >
+                                                <img src={link.icon} class="size-12" alt={link.title}/>
+                                                {link.title}
+                                                {link.description && (
+                                                        <>
+                                                            <br/>
+                                                            {link.description}
+                                                        </>
+                                                )}
+                                            </a>
+                                    ))}
+                                </div>
+                            </div>
+                )
+            }
+        </div>
+    </main>
+</Layout>

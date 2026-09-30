@@ -1,6 +1,6 @@
 'use client';
 
-import {ModeToggle} from '@altie122/ui/components/ui122/mode-toggle';
+import {ModeToggle} from '@/components/mode-toggle.tsx';
 
 export default function Header() {
     return (

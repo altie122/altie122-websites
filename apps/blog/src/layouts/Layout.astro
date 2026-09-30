@@ -1,23 +1,46 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    page: string;
+}
+
+const {title, description, page} = Astro.props;
+
+const Title = `altie122.xyz/blog | ${title}`;
+
+import '@/styles/global.css';
+import Header from '@/components/header';
+
+import Head from '../components/head.astro';
+---
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<head>
+    <script is:inline>
+        (function () {
+            const getThemePreference = () => {
+                if (
+                    typeof localStorage !== 'undefined' &&
+                    localStorage.getItem('theme')
+                ) {
+                    return localStorage.getItem('theme');
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark'
+                    : 'light';
+            };
+            const theme = getThemePreference();
+            const isDark = theme === 'dark';
+            document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+        })();
+    </script>
+    <Head title={Title} description={description} page={page}/>
+</head>
+<body>
+<div>
+    <Header client:only="react"/>
+    <slot/>
+</div>
+</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

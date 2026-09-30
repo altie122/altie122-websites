@@ -1,0 +1,30 @@
+{
+  "$schema": "https://turborepo.dev/microfrontends/schema.json",
+  "applications": {
+    "altie122.xyz": {
+      "packageName": "altie122.xyz",
+      "development": {
+        "fallback": "altie122xyz.vercel.app",
+        "local": {
+          "port": 3000
+        }
+      }
+    },
+    "altie122.xyz-blog": {
+      "packageName": "blog",
+      "development": {
+        "local": {
+          "port": 4321
+        }
+      },
+      "routing": [
+        {
+          "paths": [
+            "/blog/",
+            "/blog/:path*"
+          ]
+        }
+      ]
+    }
+  }
+}

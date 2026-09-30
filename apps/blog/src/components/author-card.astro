@@ -1,0 +1,35 @@
+---
+import {Image} from 'astro:assets';
+import type {CollectionEntry} from 'astro:content';
+import {GlobeIcon} from 'lucide-react';
+
+interface Props {
+    entry: CollectionEntry<'authors'>;
+}
+
+const {entry} = Astro.props;
+---
+
+<div
+        class="bg-sidebar text-sidebar-foreground border-sidebar-border border rounded-lg p-4 flex flex-row gap-4 w-fit items-center"
+>
+    <Image
+            src={entry.data.pfp}
+            alt={entry.data.name}
+            class="rounded-full w-12 h-12 object-cover"
+    />
+    <div class="flex flex-col">
+        <p>{entry.data.name}</p>
+        {
+            entry.data.website && (
+                        <a
+                                href={entry.data.website.url}
+                                class="prose-a inline-flex jusify-center gap-2"
+                        >
+                            <GlobeIcon/>
+                            {entry.data.website.title}
+                        </a>
+            )
+        }
+    </div>
+</div>

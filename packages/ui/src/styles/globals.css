@@ -147,3 +147,106 @@
     }
 
 }
+
+@layer utilities {
+    .prose,
+    .prose-container {
+        @apply container mx-auto px-4 pt-8 pb-16 sm:px-6 lg:px-8 max-w-[1024px];
+    }
+
+    .prose-no-y-padding,
+    .prose-container-no-y-padding {
+        @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1024px];
+    }
+
+    .prose h1,
+    .prose-no-y-padding h1,
+    .prose-no-container h1,
+    .prose-h1 {
+        @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    }
+
+    .prose h2,
+    .prose-no-y-padding h2,
+    .prose-no-container h2,
+    .prose-h2 {
+        @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+    }
+
+    .prose h3,
+    .prose-no-y-padding h3,
+    .prose-no-container h3,
+    .prose-h3 {
+        @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    }
+
+    .prose h4,
+    .prose-no-y-padding h4,
+    .prose-no-container h4,
+    .prose-h4 {
+        @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    }
+
+    .prose p,
+    .prose-no-y-padding p,
+    .prose-no-container p,
+    .prose-p {
+        @apply leading-7 [&:not(:first-child)]:mt-6;
+    }
+
+    .prose blockquote,
+    .prose-no-y-padding blockquote,
+    .prose-no-container blockquote,
+    .prose-blockquote {
+        @apply mt-6 border-l-2 pl-6 italic;
+    }
+
+    .prose table,
+    .prose-no-y-padding table,
+    .prose-no-container table,
+    .prose-table {
+        @apply w-full;
+    }
+
+    .prose tr,
+    .prose-no-y-padding tr,
+    .prose-no-container tr,
+    .prose-tr {
+        @apply m-0 border-t p-0 even:bg-muted;
+    }
+
+    .prose th,
+    .prose-no-y-padding th,
+    .prose-no-container th,
+    .prose-th {
+        @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right;
+    }
+
+    .prose ul,
+    .prose-no-y-padding ul,
+    .prose-no-container ul,
+    .prose-ul {
+        @apply my-6 ml-6 list-disc [&>li]:mt-2;
+    }
+
+    .prose ol,
+    .prose-no-y-padding ol,
+    .prose-no-container ol,
+    .prose-ol {
+        @apply my-6 ml-6 list-decimal [&>li]:mt-2;
+    }
+
+    .prose code,
+    .prose-no-y-padding code,
+    .prose-no-container code,
+    .prose-code {
+        @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    }
+
+    .prose a,
+    .prose-no-y-padding a,
+    .prose-no-container a,
+    .prose-a {
+        @apply text-primary underline hover:text-primary/90;
+    }
+}

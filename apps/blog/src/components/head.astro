@@ -1,0 +1,50 @@
+---
+import {ClientRouter} from 'astro:transitions';
+
+export interface Props {
+    title: string;
+    description: string;
+    page: string;
+}
+const {title, description, page} = Astro.props;
+// domain
+const domain = 'https://altie122.xyz';
+// make full domain -> banner image path
+const link_banner = domain + '/banner.jpg';
+---
+<!-- DO NOT ADD THE HEAD TAG -->
+<!-- sitemap, favicon, title, and metadata -->
+<link rel="sitemap" href="/sitemap-index.xml"/>
+<meta charset="UTF-8"/>
+<meta name="description" content={description}>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="icon" type="image/png" href="/icon.ico"/>
+<meta name="generator" content={Astro.generator}/>
+<link rel="manifest" href="/manifest.webmanifest"/>
+<title>{title}</title>
+<!-- canonical -->
+<link rel="canonical" href={page}>
+<!-- Social meta -->
+<meta property="og:type" content="website">
+<meta property="og:url" content={page}>
+<meta property="og:title" content={title}>
+<meta property="og:image" content={link_banner}>
+<meta property="og:description" content={description}>
+<meta property="og:site_name" content="Altie122">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@altie122">
+<meta name="twitter:creator" content="@altie122">
+<meta name="twitter:url" content={page}>
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={link_banner}>
+<!-- apple -->
+<link rel="apple-touch-icon" href="/icon.png">
+<link rel="apple-touch-startup-image" href="/banner.jpg">
+<meta name="apple-mobile-web-app-title" content={title}>
+<link rel="alternate" type="application/rss+xml" title="Your Site's Title" href={new URL('rss.xml', Astro.site)}/>
+<ClientRouter/>

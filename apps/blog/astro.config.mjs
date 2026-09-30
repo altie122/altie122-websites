@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import {defineConfig} from 'astro/config';
 
 import vercel from '@astrojs/vercel';
 
@@ -8,13 +8,19 @@ import react from '@astrojs/react';
 
 import mdx from '@astrojs/mdx';
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel(),
+    adapter: vercel(),
 
-  vite: {
-    plugins: [tailwindcss()]
-  },
+    site: isDevelopment ? 'http://localhost:4321' : 'https://altie122.xyz',
 
-  integrations: [react(), mdx()]
+    vite: {
+        plugins: [tailwindcss()],
+    },
+
+    base: "/blog",
+
+    integrations: [react(), mdx()]
 });

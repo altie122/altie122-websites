@@ -1,0 +1,82 @@
+---
+title: "DrigonFlow Updates"
+pubDate: 2025-05-24
+description: "Updates to DrigonFlow."
+authors: ["altie"]
+image:
+  cover: "../../assets/images/blog/drigonflow-updates/logo.png"
+  alt: "DrigonFlow Logo"
+tags: ["Content", "DrigonFlow"]
+isDraft: false
+isHidden: true
+---
+
+import { Banner } from "@/components/Blog/Banner";
+import { Code, solarizedDark } from "react-code-blocks";
+
+<br />
+
+<Banner title="Notice" type="Info">
+  This post is subject to change. Please check back for updates.
+</Banner>
+
+<br />
+
+DrigonFlow, my new video sharing platform! As of now, the platform is in a very early alpha.
+
+## The platform
+
+The platform is made to be a simple, less corporatized alternative to large scale video sharing platforms. 
+
+## How its made
+
+Although I do not intend to make the platform open source, I do want to be as transparent as possible while keeping the code private. In doing so, here is the current teck stack for DrigonFlow:
+
+- Next.js (create t3-app)
+- TailwindCSS
+- DrizzleORM
+  - Soon to be replaced by convex
+- Turso
+  - Soon to be replaced by convex
+- PostHog (for analytics)
+- Vercel (for hosting)
+- Mux (for video hosting)
+- Clerk (for authentication)
+
+## The roadmap
+
+I have a few goals for the platform:
+
+- Make it as easy as possible to use
+- Make it safe
+- Make it work
+
+### Full roadmap:
+
+early alpha (early 2025):
+
+- Video uploads for select users
+- Video Viewing
+
+alpha/early beta (late 2025):
+- open account registration
+- Ads
+- Video uploads for premiun users
+
+beta (early 2026):
+- live streaming for premium users (on seprate site)
+- comments, likes, and more
+
+release (late 2026):
+- Open Video uploads
+- Open Live streaming
+
+## Wait? 
+### "Wait, I thought you weren't going to make it corporatized?"
+I know, ads automatically make you think that, but I'm not going to be putting in a minue of unskippable ads. Only up to 30 seconds of skippable ads, still not ideal for you as a viewer, however video hosting and data hosting isn't free so unfortunately we need to pay for it somehow.
+
+### "Wait, premium?"
+I do plan to make a premium payment tier for the platform, ideally this will be around $5 per month. This would gain you ad free and beta access to features like video uploads and live streaming. I do not intend to make a lot of features that are only available to premium users forever.
+
+## Why is video uploading not public?
+A mix of money and the lack of a good CSAM solution for small platforms/independent programmers (most platforms like google's Child safety toolkit expects you to be an organization, not an individual). As of now I select the users I trust to upload videos and know wont abuse the platform.

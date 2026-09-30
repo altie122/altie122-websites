@@ -1,0 +1,30 @@
+import type {APIRoute} from 'astro';
+import {getCollection, getEntries} from 'astro:content';
+
+export const GET = (async ({params, request}) => {
+    const posts = [...(await getCollection('posts', ({data}) => {
+        return data.isDraft !== true && data.isHidden !== true;
+    }))];
+
+    const sortedPosts = posts.sort(
+        (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+    );
+
+    const post = sortedPosts[0];
+
+    const authors = await getEntries(post.data.authors);
+
+    return new Response(
+        JSON.stringify({
+            post: {
+                title: post.data.title,
+                description: post.data.description,
+                pubDate: post.data.pubDate,
+                lastUpdated: post.data.lastUpdated,
+                image: post.data.image,
+                tags: post.data.tags,
+            },
+            authors: authors,
+        }),
+    );
+}) satisfies APIRoute;

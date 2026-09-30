@@ -9,6 +9,7 @@
  */
 
 import type * as auth from "../auth.js";
+import type * as blog from "../blog.js";
 import type * as healthCheck from "../healthCheck.js";
 import type * as http from "../http.js";
 import type * as links from "../links.js";
@@ -23,6 +24,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  blog: typeof blog;
   healthCheck: typeof healthCheck;
   http: typeof http;
   links: typeof links;
