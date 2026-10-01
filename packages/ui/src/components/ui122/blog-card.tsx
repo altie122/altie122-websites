@@ -65,9 +65,9 @@ export function BlogCardSkeleton() {
                 >
                 <Skeleton className={'h-[0.8rem] w-1/3'}/>
                 <div className="flex flex-row items-center">
-                    <Skeleton className={'h-[1.4rem] w-[25px]'}/>
+                    <Skeleton className={'h-[0.8rem] w-[75px]'}/>
                     <CardDescription>/</CardDescription>
-                    <Skeleton className={'h-[1.4rem] w-1/3'}/>
+                    <Skeleton className={'h-[0.8rem] w-1/3'}/>
                 </div>
             </CardHeader>
             <CardContent>

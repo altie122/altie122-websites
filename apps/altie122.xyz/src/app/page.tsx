@@ -8,7 +8,6 @@ import {BlogPanel} from '@altie122/ui/components/ui122/blog-panel';
 export default function Home() {
     const links = useQuery(convexQuery(api.links.getLinksPage));
     const blogPost = useQuery(convexAction(api.blog.getRecentBlogPost));
-    const twitchStreams = useQuery(convexAction(api.twitchSchedule.getTwitchSchedule));
     return (
         <main className={'p-2 flex flex-row justify-center'}>
             <div

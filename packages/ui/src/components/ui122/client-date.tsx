@@ -9,7 +9,7 @@ interface Props {
 export function ClientDate({date}: Props) {
     const [formattedDate, setFormattedDate] = useState('');
     useEffect(() => {
-        setFormattedDate(date.toLocaleString());
+        setFormattedDate(date.toLocaleDateString());
     }, [date]);
     return (
         <>
