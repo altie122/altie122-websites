@@ -163,28 +163,28 @@
     .prose-no-y-padding h1,
     .prose-no-container h1,
     .prose-h1 {
-        @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+        @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl font-heading;
     }
 
     .prose h2,
     .prose-no-y-padding h2,
     .prose-no-container h2,
     .prose-h2 {
-        @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+        @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 font-heading;
     }
 
     .prose h3,
     .prose-no-y-padding h3,
     .prose-no-container h3,
     .prose-h3 {
-        @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+        @apply scroll-m-20 text-2xl font-semibold tracking-tight font-heading;
     }
 
     .prose h4,
     .prose-no-y-padding h4,
     .prose-no-container h4,
     .prose-h4 {
-        @apply scroll-m-20 text-xl font-semibold tracking-tight;
+        @apply scroll-m-20 text-xl font-semibold tracking-tight font-heading;
     }
 
     .prose p,
@@ -248,5 +248,9 @@
     .prose-no-container a,
     .prose-a {
         @apply text-primary underline hover:text-primary/90;
+    }
+
+    .prose-a-hover {
+        @apply hover:text-primary/90;
     }
 }

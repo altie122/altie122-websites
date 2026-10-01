@@ -1,13 +1,14 @@
 'use client';
 
-import {ModeToggle} from '@/components/mode-toggle.tsx';
+import {ModeToggle} from '@altie122/ui/components/ui122/mode-toggle';
 
-export default function Header() {
+export function Header() {
     return (
         <div
             className="sticky top-0 z-50 flex flex-row items-center justify-between p-2 bg-card/50 text-card-foreground border-border border-b backdrop-blur-xl shadow-xl h-12">
             <div className={'basis-1/3'}>
-                <a className={'font-heading text-2xl font-bold hover:prose-a'} href={'/'}>altie122</a>
+                <a className={'font-heading text-2xl font-bold prose-a-hover transition-all duration-500 ease-in-out'}
+                   href={'/'}>altie122</a>
             </div>
             <div className={'basis-1/3 justify-center items-center flex gap-2'}>
                 <a href={'/blog'} className={'prose-a'}>Blog</a>
