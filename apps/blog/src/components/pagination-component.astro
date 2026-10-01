@@ -50,7 +50,7 @@ function isPageLink(link: PageLink | Ellipsis): link is PageLink {
     <PaginationContent client:only="react">
         {page.url.prev && (
                 <PaginationItem client:only="react">
-                    <PaginationPrevious href={page.url.prev} client:only="react"/>
+                    <PaginationPrevious href={`/blog/${page.url.prev}`} client:only="react"/>
                 </PaginationItem>
         )}
         {collapsedPages.map((link, index) =>
@@ -69,7 +69,7 @@ function isPageLink(link: PageLink | Ellipsis): link is PageLink {
         )}
         {page.url.next && (
                 <PaginationItem>
-                    <PaginationNext href={page.url.next} client:only="react"/>
+                    <PaginationNext href={`/blog/${page.url.next}`} client:only="react"/>
                 </PaginationItem>
         )}
     </PaginationContent>
