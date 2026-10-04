@@ -5,7 +5,7 @@ import type {Doc, Id} from './_generated/dataModel';
 
 export const getLinksPage = query({
     handler: async (ctx) => {
-        const links = await ctx.db.query('links').filter(q => q.not(q.eq(q.field('type'), 'hidden'))).collect();
+        const links = await ctx.db.query('links').filter(q => q.and(q.not(q.eq(q.field('type'), 'hidden')), q.not(q.eq(q.field('type'), 'DISABLED')))).collect();
         return links;
     },
 });
@@ -15,7 +15,7 @@ export const getLinksPagePaginated = query({
         paginationOpts: paginationOptsValidator,
     },
     handler: async (ctx, args) => {
-        return await ctx.db.query('links').filter(q => q.not(q.eq(q.field('type'), 'hidden'))).paginate(args.paginationOpts);
+        return await ctx.db.query('links').filter(q => q.and(q.not(q.eq(q.field('type'), 'hidden')), q.not(q.eq(q.field('type'), 'DISABLED')))).paginate(args.paginationOpts);
     },
 });
 
@@ -68,6 +68,9 @@ export const getLinkById = query({
             }
         } else {
             link = await get_other_id();
+        }
+        if (link?.type === 'DISABLED') {
+            return null;
         }
         return link;
     },
